@@ -1,20 +1,23 @@
 import xml.etree.ElementTree as ET
 import os
 
-# SCENARIO: 
+# SCENARIO
 # Android resources are in XML file, iOS resources are in XLIFF file. 
 # The Android and iOS files differ by list of strings, by sorting, and string keys.
 # English strings can be identical between Android and iOS files.
 # We need to check if translations are also identical for the strings that are identical in English.
-# The code is written with ChatGPT 4.0 in 8 prompts
+# The code is written with ChatGPT 4.0 in 8 prompts.
+
+# DEFINITIONS
+# Please update definitions to your use case:
 
 SUPPORTED_LANGUAGES = ["de", "es", "fr", "it-IT", "ja-JP", "ko-KR", "pt-BR", "ru-RU", "zh-CN", "zh-TW"]  # Languages list
 # Translated file names are created by appending _ and language code to source file name
 
 ENGLISH_ANDROID_PATH = "Android/strings V2.xml" # Android source path and file
-# Please put Android translated files in the same folder as Android source file
+# Put Android translated files in the same folder as Android source file
 ENGLISH_IOS_PATH = "iOS/en V1.xliff" # iOS source path and file
-# Please put iOS translated files in the same folder as iOS source file
+# Put iOS translated files in the same folder as iOS source file
 
 IGNORED_CHARACTERS = ["\\"]  # Characters to ignore because they are only added in one type of file
 # For example: In Android files, apostrophe ' is escaped - in iOS files it is not. 
@@ -23,6 +26,7 @@ IGNORED_CHARACTERS = ["\\"]  # Characters to ignore because they are only added 
 # Android: Une erreur temporaire s\'est produite.
 # iOS: Une erreur temporaire s'est produite.
 
+# END OF DEFINITIONS
 
 def parse_android(xml_path):
     """Parse Android XML."""
